@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+    {% load static %}
+    
+</head>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+form {
+    margin-top: 30px;
+}
+
+input[type="text"],
+select {
+    padding: 15px;
+    width: 70%;
+    margin-right: 10px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+
+button {
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Optional: Style the select dropdown */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    padding: 15px;
+    outline: none;
+}
+
+/* Optional: Style the container for better centering on larger screens */
+@media (min-width: 768px) {
+    .container {
+        margin-top: 100px;
+    }
+}
+
+
+</style>
+<body>
+    <div class="container">
+        <h1>Welcome to the Weather App</h1>
+        <p>Discover the weather in any city!</p>
+        <form method="GET" action="{% if city_name %}{% url 'city_weather' city_name=city_name %}{% endif %}">
+            <input type="text" name="city_name" placeholder="Enter a city" value="{{ city_name }}">
+            <select name="unit" id="unit">
+                <option value="metric" {% if request.GET.unit == 'metric' %}selected{% endif %}>Celsius</option>
+                <option value="imperial" {% if request.GET.unit == 'imperial' %}selected{% endif %}>Fahrenheit</option>
+            </select>
+            <button type="submit" class="button">Get Weather</button>
+        </form>
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+</body>
+</html>

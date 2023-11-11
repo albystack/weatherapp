@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ city_name }} Weather</title>
+    {% load static %}
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', 'Tahoma', 'Verdana', 'sans-serif';
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+    }
+
+    p {
+        color: #666;
+    }
+</style>
+<body style="background-color: {{ background_color }};">
+    <div class="container">
+        <h1>Weather for {{ city_name }}</h1>
+
+        {% if error_message %}
+            <p class="error">{{ error_message }}</p>
+        {% else %}
+            <p>Current Weather Conditions:</p>
+            <ul>
+                <li>Temperature: {{ temperature }} °C</li>
+                <li>Feels Like: {{ feels_like }} °C</li>
+                <li>Humidity: {{ humidity }}%</li>
+                <li>Visibility: {{ visibility }}</li>
+                <li>Weather Description: {{ weather_description }}</li>
+                <li>Wind Speed: {{ wind_speed }} m/s</li>
+                <li>Pressure: {{ pressure }} hPa</li>
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
